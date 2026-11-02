@@ -1,0 +1,777 @@
+[
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid80/UD_0801_000.jsp",
+    "programs_and_rfc": [
+      "UD_0801_000",
+      "UD_0801_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid99/UD_9999_000.jsp",
+    "programs_and_rfc": [
+      "UD_9999_000",
+      "UD_9999_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid99/UD_9999_001.jsp",
+    "programs_and_rfc": [
+      "UD_9999_000",
+      "UD_9999_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid99/UD_9999_020.jsp",
+    "programs_and_rfc": [
+      "UD_9999_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid99/UD_9999_010.jsp",
+    "programs_and_rfc": [
+      "UD_9999_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_0901_040.jsp",
+    "programs_and_rfc": [
+      "UD_0901_040"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_0901_010.jsp",
+    "programs_and_rfc": [
+      "UD_0901_010",
+      "UD_0901_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_0901_060.jsp",
+    "programs_and_rfc": [
+      "UD_0901_060"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_9040_030.jsp",
+    "programs_and_rfc": [
+      "UD_9040_030"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_9040_010.jsp",
+    "programs_and_rfc": [
+      "UD_9040_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_0901_020.jsp",
+    "programs_and_rfc": [
+      "UD_0901_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_9060_010.jsp",
+    "programs_and_rfc": [
+      "UD_9060_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_0901_030.jsp",
+    "programs_and_rfc": [
+      "UD_0901_030"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid90/UD_0901_000.jsp",
+    "programs_and_rfc": [
+      "UD_0901_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_031.jsp",
+    "programs_and_rfc": [
+      "UD_0701_001",
+      "UD_0701_030",
+      "UD_0701_031"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_023.jsp",
+    "programs_and_rfc": [
+      "UD_0701_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_021.jsp",
+    "programs_and_rfc": [
+      "UD_0701_021"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_000.jsp",
+    "programs_and_rfc": [
+      "UD_0302_000",
+      "UD_0701_000",
+      "UD_0701_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0702_001.jsp",
+    "programs_and_rfc": [
+      "UD_0702_000",
+      "UD_0702_001",
+      "UD_0702_002"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_001.jsp",
+    "programs_and_rfc": [
+      "UD_0701_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_7010_031.jsp",
+    "programs_and_rfc": [
+      "UD_7010_031"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_7010_011.jsp",
+    "programs_and_rfc": [
+      "UD_7010_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_030.jsp",
+    "programs_and_rfc": [
+      "UD_0302_000",
+      "UD_0701_000",
+      "UD_0701_031"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_011.jsp",
+    "programs_and_rfc": [
+      "UD_0701_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_7010_041.jsp",
+    "programs_and_rfc": [
+      "UD_7010_041"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_7010_021.jsp",
+    "programs_and_rfc": [
+      "UD_7010_021"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0702_002.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0201_003",
+      "UD_0201_010",
+      "UD_0201_020",
+      "UD_0302_000",
+      "UD_0702_000",
+      "UD_0702_001",
+      "UD_0702_002",
+      "UD_7010_020",
+      "UD_7010_030"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0702_000.jsp",
+    "programs_and_rfc": [
+      "UD_0702_000",
+      "UD_0702_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_022.jsp",
+    "programs_and_rfc": [
+      "UD_0701_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_020.jsp",
+    "programs_and_rfc": [
+      "UD_0701_010",
+      "UD_0701_021",
+      "UD_0701_022",
+      "UD_0701_023"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid70/UD_0701_010.jsp",
+    "programs_and_rfc": [
+      "UD_0701_010",
+      "UD_0701_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_060.jsp",
+    "programs_and_rfc": [
+      "UD_0602_060"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_020.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0602_010",
+      "UD_0602_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_030.jsp",
+    "programs_and_rfc": [
+      "UD_0601_030"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_000.jsp",
+    "programs_and_rfc": [
+      "UD_0601_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_050.jsp",
+    "programs_and_rfc": [
+      "UD_0602_050"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_060.jsp",
+    "programs_and_rfc": [
+      "UD_0601_060"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_010.jsp",
+    "programs_and_rfc": [
+      "UD_0601_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_080.jsp",
+    "programs_and_rfc": [
+      "UD_0602_080"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_040.jsp",
+    "programs_and_rfc": [
+      "UD_0602_040"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_070.jsp",
+    "programs_and_rfc": [
+      "UD_0601_070"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_040.jsp",
+    "programs_and_rfc": [
+      "UD_0601_040"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_070.jsp",
+    "programs_and_rfc": [
+      "UD_0602_070"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0602_030.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0602_030"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_050.jsp",
+    "programs_and_rfc": [
+      "UD_0601_050"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid60/UD_0601_020.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0601_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid50/UD_0502_000.jsp",
+    "programs_and_rfc": [
+      "UD_0501_000",
+      "UD_0502_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid50/UD_0501_000.jsp",
+    "programs_and_rfc": [
+      "UD_0501_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid50/UD_0501_010.jsp",
+    "programs_and_rfc": [
+      "UD_0501_000",
+      "UD_0501_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid40/UD_0402_000.jsp",
+    "programs_and_rfc": [
+      "UD_0402_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid30/UD_0302_011.jsp",
+    "programs_and_rfc": [
+      "UD_0302_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid30/UD_0302_000.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0302_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid30/UD_0302_010.jsp",
+    "programs_and_rfc": [
+      "UD_0302_010",
+      "UD_0302_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0205_010.jsp",
+    "programs_and_rfc": [
+      "UD_0205_010",
+      "UD_0302_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0203_011.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2609"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0203_001.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2609"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0202_012.jsp",
+    "programs_and_rfc": [
+      "UD_0202_012"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0202_001.jsp",
+    "programs_and_rfc": [
+      "UD_0202_001",
+      "ZUNID_2509",
+      "ZUNID_2902"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_014.jsp",
+    "programs_and_rfc": [
+      "UD_0201_014"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_003.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0201_003"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_001.jsp",
+    "programs_and_rfc": [
+      "UD_0201_001"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0205_001.jsp",
+    "programs_and_rfc": [
+      "UD_0205_001",
+      "UD_0205_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0204_011.jsp",
+    "programs_and_rfc": [
+      "ZUNID_3200"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0202_041.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2509"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0202_011.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2509"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_031.jsp",
+    "programs_and_rfc": [
+      "UD_0201_031"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_020.jsp",
+    "programs_and_rfc": [
+      "UD_0201_001",
+      "UD_0201_020",
+      "UD_0201_021",
+      "ZUNID_3200"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_013.jsp",
+    "programs_and_rfc": [
+      "UD_0201_013"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0205_000.jsp",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "UD_0302_000",
+      "ZUNID_2801C"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0203_021.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2609"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0202_031.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2509"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0202_010.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0202_010",
+      "UD_0202_012"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_021.jsp",
+    "programs_and_rfc": [
+      "UD_0201_021"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_015.jsp",
+    "programs_and_rfc": [
+      "UD_0201_010",
+      "UD_0201_011",
+      "UD_0201_013",
+      "UD_0201_014"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_011.jsp",
+    "programs_and_rfc": [
+      "UD_0201_011"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_010.jsp",
+    "programs_and_rfc": [
+      "UD_0201_010",
+      "UD_0201_011",
+      "UD_0201_013",
+      "UD_0201_014"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/unid20/UD_0201_000.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0201_001",
+      "ZUNID_3200"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/MultiArea.jsp",
+    "programs_and_rfc": [
+      "ZUNID_2822"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/DeleteExplane.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/ChangeMoney.jsp",
+    "programs_and_rfc": [
+      "UD_0602_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/APSearchPopup.jsp",
+    "programs_and_rfc": [
+      "UD_0201_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/AfterCreateStatement.jsp",
+    "programs_and_rfc": [
+      "UD_0302_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/TravelExpensesAfterCreate.jsp",
+    "programs_and_rfc": [
+      "UD_0302_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/StatementPreview.jsp",
+    "programs_and_rfc": [
+      "ZUNID_000_013T"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/RequestDelay.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/popup/CollectSlip.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "UD_0201_001",
+      "UD_0205_000",
+      "ZUNID_3201"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0608_020A.jsp",
+    "programs_and_rfc": [
+      "UD_0608_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0205_000A.jsp",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "ZUNID_2801A"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0608_020B.jsp",
+    "programs_and_rfc": [
+      "UD_0608_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0205_000C.jsp",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "UD_0205_010",
+      "ZUNID_0040"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0201_000A.jsp",
+    "programs_and_rfc": [
+      "UD_0201_000",
+      "ZUNID_2100B"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0608_020C.jsp",
+    "programs_and_rfc": [
+      "UD_0608_020",
+      "ZUNID_5014G"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/UD_0205_000B.jsp",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "ZUNID_0040",
+      "ZUNID_2801B"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/common/UniDocuCodePopup.jsp",
+    "programs_and_rfc": [
+      "UD_0601_020"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/common/uploadXML.jsp",
+    "programs_and_rfc": [
+      "UD_0201_010"
+    ]
+  },
+  {
+    "artifact_path": "WEB-INF/pages/unidocu/iframe/common/employee_rank_list.jsp",
+    "programs_and_rfc": [
+      "ZUNID_0040",
+      "ZUNID_2210"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/popup/unidocuPopup.js",
+    "programs_and_rfc": [
+      "UD_0201_090",
+      "UD_0205_001",
+      "UD_0601_001",
+      "UD_0601_002",
+      "UD_0601_003",
+      "UD_0601_004",
+      "UD_9040_011",
+      "UD_9040_031"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/requestApproval/approverList.js",
+    "programs_and_rfc": [
+      "UD_7010_011",
+      "UD_7010_021"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/page/UD_7010_021_formHandler.js",
+    "programs_and_rfc": [
+      "UD_7010_021"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/page/UD_7010_011_formHandler.js",
+    "programs_and_rfc": [
+      "UD_7010_011"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/page/formTableDetail.js",
+    "programs_and_rfc": [
+      "UD_9040_011"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/page/formButtonsDetail.js",
+    "programs_and_rfc": [
+      "UD_9040_031"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/createStatement/waersHandler.js",
+    "programs_and_rfc": [
+      "ZUNID_3501"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/createStatement/calculateStatement.js",
+    "programs_and_rfc": [
+      "UD_0201_011",
+      "UD_0202_001",
+      "ZUNID_2705",
+      "ZUNID_2709"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/createStatement/waersHandler2.js",
+    "programs_and_rfc": [
+      "ZUNID_3501"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/createStatement/createStatement.js",
+    "programs_and_rfc": [
+      "UD_0201_001",
+      "UD_0202_001",
+      "UD_0205_000",
+      "UD_0205_010",
+      "UD_0601_001",
+      "UD_0601_002",
+      "UD_0601_003",
+      "UD_0601_004",
+      "ZUNID_2901",
+      "ZUNID_3200",
+      "ZUNID_3201",
+      "ZUNID_3202"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/businesstrip/btcommon.js",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "UD_0205_001",
+      "UD_0205_010",
+      "ZUNID_2801",
+      "ZUNID_2822",
+      "ZUNID_2823",
+      "ZUNID_2830",
+      "ZUNID_2901"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/businesstrip/btphysical.js",
+    "programs_and_rfc": [
+      "UD_0205_010",
+      "ZUNID_2810",
+      "ZUNID_2822",
+      "ZUNID_2825",
+      "ZUNID_2827"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/businesstrip/btcommon.popup.js",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "UD_0205_001"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/businesstrip/btcard.popup.js",
+    "programs_and_rfc": [
+      "UD_0205_000"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/businesstrip/btcard.js",
+    "programs_and_rfc": [
+      "UD_0205_000",
+      "ZUNID_2110",
+      "ZUNID_2800",
+      "ZUNID_2801D"
+    ]
+  },
+  {
+    "artifact_path": "js/unidocu/approveStatement/approveStatement.js",
+    "programs_and_rfc": [
+      "UD_7010_010",
+      "UD_7010_061"
+    ]
+  }
+]

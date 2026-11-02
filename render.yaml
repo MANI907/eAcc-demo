@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: eacc-demo
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /api/health
+    autoDeployTrigger: 'off'
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: HOST
+        value: 0.0.0.0
+      - key: EACC_PUBLIC_DEPLOYMENT
+        value: '1'
+      - key: EACC_ACCESS_CODE
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        value: https://cnxbptpnuihhqeirslux.supabase.co
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: eacc-evidence
+      - key: SAP_ALLOWED_HOST
+        value: my434089-api.s4hana.cloud.sap
+      - key: SAP_JOURNAL_WSDL_URL
+        value: https://my434089-api.s4hana.cloud.sap/sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi?wsdl
