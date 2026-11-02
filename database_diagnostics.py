@@ -3,6 +3,8 @@ import re
 
 HINTS={
  'DB_CONFIG_INVALID':'Check DATABASE_URL format. Use only the PostgreSQL URI, URL-encode reserved password characters, and replace password placeholders.',
+ 'DB_CA_DOWNLOAD_FAILED':'Could not retrieve the official Supabase CA over verified HTTPS. Supply a trusted CA file using DATABASE_SSL_ROOT_CERT; verification remains enabled.',
+ 'DB_CA_INVALID':'The provider CA is not a valid, currently trusted-format CA certificate. Use the official Supabase certificate; verification remains enabled.',
  'DB_CA_UNAVAILABLE':'DATABASE_SSL_ROOT_CERT must point to an existing trusted CA file. TLS verification remains enabled.',
  'DB_DNS_FAILED':'Check the copied Supabase database host. Copy the exact Shared Session pooler address; do not infer its region.',
  'DB_NETWORK_FAILED':'Database network connection failed. For IPv4 hosting use Supabase Shared Session pooler (normally port 5432); check project availability.',

@@ -3,6 +3,7 @@ from contextlib import contextmanager
 import os, sqlite3
 from pathlib import Path
 from database_diagnostics import DatabaseConfigError
+from database_trust import resolve_ca
 
 class Record(dict):
  def __getitem__(self,key):
@@ -39,8 +40,7 @@ def connect(sqlite_path):
  password=config.get('password','')
  if any(marker in password.lower() for marker in ['[your-password]','[your_password]','<your-password>','<password>']):
   raise DatabaseConfigError()
- ca=os.environ.get('DATABASE_SSL_ROOT_CERT','/etc/ssl/certs/ca-certificates.crt')
- if not Path(ca).is_file():raise DatabaseConfigError('DB_CA_UNAVAILABLE')
+ ca=resolve_ca(config.get('host',''))
  # Explicit kwargs override URL options, so the URL cannot turn TLS verification off.
  with psycopg.connect(url,sslmode='verify-full',sslrootcert=ca,connect_timeout=10,prepare_threshold=None,row_factory=row_factory) as conn:
   conn.execute('CREATE SCHEMA IF NOT EXISTS eacc')

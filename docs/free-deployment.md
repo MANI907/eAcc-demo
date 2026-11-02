@@ -114,3 +114,20 @@ SUPABASE_URL은 제공받은 프로젝트 주소로 미리 설정했습니다. R
 인증서가 필요하면 Supabase 프로젝트의 Database/SSL 설정에서 제공하는 CA를 사용하세요. Render에 등록한 파일이 예를 들어 /etc/secrets/supabase-ca.crt이면 DATABASE_SSL_ROOT_CERT를 그 경로로 설정합니다. sslmode=verify-full을 끄거나 sslmode=require로 완화하지 않습니다.
 
 자동 배포는 꺼져 있으므로 수정 커밋을 올린 뒤 Render 서비스에서 **Manual Deploy → Deploy latest commit**을 실행해야 합니다. 기존 92863bb를 다시 배포하면 이전의 일반 메시지가 계속 표시됩니다. 코드만으로 실제 DB 비밀번호·연결주소를 바꾸거나 오류 원인을 확정할 수는 없습니다.
+
+
+## Supabase DB CA 자동 적용
+
+`DB_TLS_FAILED` 배포 오류 대응으로 Supabase 호스트 연결에서는 공식 DB CA를 자동 준비합니다. 현재 Studio의 공식 다운로드 소스는 다음과 같습니다.
+
+https://supabase-downloads.s3-ap-southeast-1.amazonaws.com/prod/ssl/prod-ca-2021.crt
+
+출처는 Supabase 저장소의 `apps/studio/hooks/custom-content/custom-content.json` 및 `apps/studio/components/interfaces/Settings/Database/SSLConfiguration.tsx`입니다. 주소를 연결 호스트나 지역에서 추측하지 않습니다.
+
+- 기존 `pip install -r requirements.txt` 빌드 명령을 그대로 사용할 수 있습니다. 인증서는 앱 시작 시 필요할 때 내려받고 `.runtime/database-trust`에 캐시합니다. Blueprint 재동기화나 별도 새 환경변수는 필요하지 않습니다.
+- 인증서는 시스템 CA로 검증한 HTTPS로 가져옵니다. 리다이렉트를 따르지 않으며 단일 PEM 인증서, CA 확장, 유효기간과 OpenSSL 로딩을 확인합니다. 다운로드 실패·인증서 오류 시 연결을 중단합니다.
+- 시스템 신뢰 루트도 유지한 결합 CA 번들을 사용하며 PostgreSQL `sslmode=verify-full`과 호스트 이름 검증은 유지합니다.
+- 이미 `DATABASE_SSL_ROOT_CERT`를 명시한 경우에는 그 파일을 우선 사용합니다. 자동 적용을 사용하려면 수동 설정을 제거하세요. 인증서 검증을 완화하는 sslmode 설정을 추가하지 마세요.
+- 다운로드 오류는 `DB_CA_DOWNLOAD_FAILED`, 인증서 내용 오류는 `DB_CA_INVALID`로 구분합니다. 다운로드가 제한되는 경우에는 Supabase의 Database settings → SSL configuration에서 받은 CA를 Render Secret Files에 등록하고 기존 `DATABASE_SSL_ROOT_CERT` 파일 경로로 지정할 수 있습니다.
+
+현재 검증: 36개 테스트 통과. 로컬 테스트 CA를 사용한 실제 TLS 핸드셰이크 성공과 잘못된 호스트 이름 거부를 확인했습니다. 이 클라우드의 S3 접근은 정책상 차단되어 공식 인증서 파일을 실제로 내려받거나 사용자의 DB 서버 인증서 체인과 대조하지 못했습니다. 실제 Render/Supabase 연결 성공은 수정 버전 배포 후 확인해야 합니다.
