@@ -2,6 +2,7 @@
 from contextlib import contextmanager
 import os, sqlite3
 from pathlib import Path
+from database_diagnostics import DatabaseConfigError
 
 class Record(dict):
  def __getitem__(self,key):
@@ -28,8 +29,18 @@ def connect(sqlite_path):
   finally:c.close()
   return
  import psycopg
+ from psycopg.conninfo import conninfo_to_dict
+ try:
+  config=conninfo_to_dict(url)
+ except Exception:
+  raise DatabaseConfigError() from None
+ if url!=url.strip() or not url.startswith(('postgresql://','postgres://')) or '\n' in url or '\r' in url:
+  raise DatabaseConfigError()
+ password=config.get('password','')
+ if any(marker in password.lower() for marker in ['[your-password]','[your_password]','<your-password>','<password>']):
+  raise DatabaseConfigError()
  ca=os.environ.get('DATABASE_SSL_ROOT_CERT','/etc/ssl/certs/ca-certificates.crt')
- if not Path(ca).is_file():raise RuntimeError('PostgreSQL CA trust file is unavailable.')
+ if not Path(ca).is_file():raise DatabaseConfigError('DB_CA_UNAVAILABLE')
  # Explicit kwargs override URL options, so the URL cannot turn TLS verification off.
  with psycopg.connect(url,sslmode='verify-full',sslrootcert=ca,connect_timeout=10,prepare_threshold=None,row_factory=row_factory) as conn:
   conn.execute('CREATE SCHEMA IF NOT EXISTS eacc')

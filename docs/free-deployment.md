@@ -92,3 +92,25 @@ SUPABASE_URL은 제공받은 프로젝트 주소로 미리 설정했습니다. R
 - Render 실제 빌드·게시·무료 플랜 가용성·재시작 후 보존 및 실제 SAP 연결은 배포 계정 설정 후 검증해야 합니다.
 
 공식 안내: https://render.com/docs/free · https://render.com/docs/blueprint-spec · https://supabase.com/docs/guides/database/connecting-to-postgres · https://supabase.com/docs/guides/storage/buckets/creating-buckets
+
+
+## Render에서 Database initialization failed가 발생할 때
+
+빌드 성공 후 이 문구가 나오면 DB 초기화 단계의 실패입니다. 이 단계는 Storage 또는 service_role 키를 사용하지 않습니다. 새 버전은 비밀정보나 원문 오류 대신 고정 진단 코드를 출력합니다.
+
+| 로그 코드 | 확인할 사항 |
+| --- | --- |
+| DB_CONFIG_INVALID | URI만 복사했는지, 비밀번호 자리표시자 교체 및 URL 인코딩 |
+| DB_DNS_FAILED | 실제 Connect 화면의 정확한 pooler 호스트 |
+| DB_NETWORK_FAILED / DB_CONNECT_TIMEOUT | 무료 Shared Session pooler / 5432, 프로젝트 가동 상태 및 네트워크 제한 |
+| DB_AUTH_FAILED | Supabase 계정 암호가 아닌 프로젝트 DB 암호, 복사한 사용자명 |
+| DB_POOLER_TENANT_FAILED | Connect의 postgres.<project-ref> 사용자명과 실제 pooler 호스트 조합 |
+| DB_TLS_FAILED / DB_CA_UNAVAILABLE | Supabase의 DB 인증서 다운로드, Render Secret File에 등록 후 DATABASE_SSL_ROOT_CERT에 파일 경로 지정 |
+| DB_TLS_HOSTNAME_FAILED | Connect 화면의 실제 호스트 사용 여부 |
+| DB_PERMISSION_DENIED | eacc 스키마 생성/사용 권한 및 기존 스키마 소유권 |
+| DB_DATABASE_NOT_FOUND | URI의 DB 이름 (일반적으로 postgres) |
+| DB_INIT_FAILED | 함께 표시된 SQLSTATE를 확인하고 비밀값 없이 진단 |
+
+인증서가 필요하면 Supabase 프로젝트의 Database/SSL 설정에서 제공하는 CA를 사용하세요. Render에 등록한 파일이 예를 들어 /etc/secrets/supabase-ca.crt이면 DATABASE_SSL_ROOT_CERT를 그 경로로 설정합니다. sslmode=verify-full을 끄거나 sslmode=require로 완화하지 않습니다.
+
+자동 배포는 꺼져 있으므로 수정 커밋을 올린 뒤 Render 서비스에서 **Manual Deploy → Deploy latest commit**을 실행해야 합니다. 기존 92863bb를 다시 배포하면 이전의 일반 메시지가 계속 표시됩니다. 코드만으로 실제 DB 비밀번호·연결주소를 바꾸거나 오류 원인을 확정할 수는 없습니다.

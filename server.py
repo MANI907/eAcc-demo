@@ -5,6 +5,7 @@ from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 from catalog import MENUS
 import persistence, blob_store
+from database_diagnostics import startup_message
 import time
 ROOT=Path(__file__).resolve().parent
 DATA=Path(os.environ.get('EACC_DATA_DIR',ROOT/'.runtime')); DATA.mkdir(parents=True,exist_ok=True)
@@ -388,5 +389,5 @@ def check_deployment():
 if __name__=='__main__':
  check_deployment()
  try:init()
- except Exception:raise SystemExit('Database initialization failed. Check server-side database settings; credentials are never printed.')
+ except Exception as error:raise SystemExit(startup_message(error)) from None
  port=int(os.environ.get('PORT','8000'));host=os.environ.get('HOST','127.0.0.1');print(f'eAcc listening on port {port}',flush=True);ThreadingHTTPServer((host,port),Handler).serve_forever()
