@@ -5,8 +5,8 @@ from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 from catalog import MENUS
 import persistence, blob_store
-from database_diagnostics import startup_message
-import time
+from database_diagnostics import startup_message, diagnose
+import time, traceback
 ROOT=Path(__file__).resolve().parent
 DATA=Path(os.environ.get('EACC_DATA_DIR',ROOT/'.runtime')); DATA.mkdir(parents=True,exist_ok=True)
 DB=DATA/'portal.db'
@@ -182,7 +182,13 @@ class Handler(BaseHTTPRequestHandler):
     return self.send(404,dict(error='API를 찾을 수 없습니다.'))
   except PermissionError as e:self.send(403,dict(error=str(e)))
   except ValueError as e:self.send(400,dict(error=str(e)))
-  except Exception:self.send(503,dict(error='저장소 연결을 확인하세요.'))
+  except blob_store.StorageError as error:self.send(502,dict(error=str(error),code=error.code))
+  except Exception as error:
+   diagnostic=diagnose(error)
+   component='bootstrap' if urlparse(self.path).path=='/api/bootstrap' else 'attachment' if urlparse(self.path).path.startswith('/api/files/') else 'other'
+   frames=[Path(f.filename).name+':'+f.name+':'+str(f.lineno) for f in traceback.extract_tb(error.__traceback__) if Path(f.filename).parent==ROOT]
+   print('Data read failed ['+diagnostic['code']+'] component='+component+' type='+type(error).__name__+' at='+','.join(frames)+'. '+diagnostic['message'],flush=True)
+   self.send(503,dict(error='['+diagnostic['code']+'] 데이터를 다시 불러오지 못했습니다. 이미 저장한 전표는 재작성하지 말고 목록을 새로 조회하세요.',code=diagnostic['code']))
  def do_POST(self):
   try:
    origin=self.headers.get('Origin')
@@ -215,6 +221,7 @@ class Handler(BaseHTTPRequestHandler):
    self.send(200,result)
   except PermissionError as e:self.send(403,dict(error=str(e)))
   except (ValueError,KeyError,TypeError,sqlite3.IntegrityError) as e:self.send(400,dict(error=str(e)))
+  except blob_store.StorageError as error:self.send(502,dict(error=str(error),code=error.code))
   except Exception:self.send(500,dict(error='처리 중 오류가 발생했습니다. 서버 로그를 확인하세요.'))
  def mutate(self,c,u,path,b):
   if path=='/api/logout':

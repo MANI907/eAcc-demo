@@ -29,12 +29,27 @@ class HostingTests(unittest.TestCase):
    with server.connection() as c:self.assertIsNone(c.execute('SELECT content FROM files WHERE id=?',(r['id'],)).fetchone()[0])
    with urlopen(Request(self.base+'/api/files/'+r['id'],headers={'Cookie':self.cookies['employee']})) as download:self.assertEqual(download.read(),raw)
    self.assertEqual([x.args[0] for x in request.call_args_list],['POST','GET'])
-   self.assertFalse(request.call_args.kwargs['allow_redirects'])
+   self.assertFalse(request.call_args.kwargs['allow_redirects']);self.assertIn('/object/authenticated/',request.call_args.args[1])
  def test_storage_failure_does_not_commit_metadata(self):
   raw=b'%PDF-1.4\nEvidence test'
   with patch.dict(os.environ,dict(SUPABASE_URL='https://test-project.supabase.co',SUPABASE_SERVICE_ROLE_KEY='test-key')),patch('blob_store.requests.request',return_value=Mock(status_code=403,content=b'')):
-   self.assertEqual(self.call('files',dict(name='receipt.pdf',mime='application/pdf',content=base64.b64encode(raw).decode()))[0],500)
+   status,error=self.call('files',dict(name='receipt.pdf',mime='application/pdf',content=base64.b64encode(raw).decode()));self.assertEqual(status,502);self.assertEqual(error['code'],'EVIDENCE_STORAGE_AUTH')
    with server.connection() as c:self.assertEqual(c.execute('SELECT COUNT(*) FROM files').fetchone()[0],0)
+ def test_missing_bucket_is_distinguished_without_provider_body(self):
+  response=Mock(status_code=400,content=b'');response.json.return_value=dict(statusCode='404',message='Bucket not found secret-marker')
+  raw=b'%PDF-1.4 test'
+  with patch.dict(os.environ,dict(SUPABASE_URL='https://test-project.supabase.co',SUPABASE_SERVICE_ROLE_KEY='test-key')),patch('blob_store.requests.request',return_value=response):
+   status,error=self.call('files',dict(name='receipt.pdf',mime='application/pdf',content=base64.b64encode(raw).decode()))
+   self.assertEqual(status,502);self.assertEqual(error['code'],'EVIDENCE_BUCKET_NOT_FOUND');self.assertNotIn('secret-marker',str(error))
+ def test_storage_download_error_uses_evidence_code(self):
+  with server.connection() as c:c.execute('INSERT INTO files VALUES(?,?,?,?,?)',('b'*24,'E1001','test.pdf','application/pdf',None))
+  with patch('blob_store.download',side_effect=blob_store.StorageError('EVIDENCE_NOT_FOUND')):
+   status,error=self.call('files/'+'b'*24)
+   self.assertEqual(status,502);self.assertEqual(error['code'],'EVIDENCE_NOT_FOUND')
+ def test_database_read_error_does_not_leak_connection_string(self):
+  with patch('server.connection',side_effect=Exception('password authentication failed for postgresql://user:never-print@host/db')):
+   status,error=self.call('bootstrap')
+   self.assertEqual(status,503);self.assertEqual(error['code'],'DB_AUTH_FAILED');self.assertNotIn('never-print',str(error))
  def test_database_failure_removes_new_storage_object(self):
   raw=b'%PDF-1.4\nEvidence test'
   with patch.dict(os.environ,dict(SUPABASE_URL='https://test-project.supabase.co',SUPABASE_SERVICE_ROLE_KEY='test-key')),patch('blob_store.requests.request',return_value=Mock(status_code=200,content=b'')) as request,patch('server.audit',side_effect=RuntimeError('test rollback')):
