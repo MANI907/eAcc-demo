@@ -44,6 +44,17 @@ class PortalTests(unittest.TestCase):
   status,d=self.call(f'documents/{id}/post',{},'ito');self.assertEqual(status,200);self.assertEqual(d['state'],'posted');self.assertTrue(d['sap_reference'].startswith('SIM-'))
   self.assertEqual(self.call(f'documents/{id}/post',{},'ito')[1]['sap_reference'],d['sap_reference'])
   self.assertEqual(len(self.call('audit',role='ito')[1]),4)
+ def test_document_read_is_scoped_and_shows_committed_approval(self):
+  id=self.make()
+  self.assertEqual(self.call('documents/'+id)[0],200)
+  self.assertEqual(self.call('documents/'+id,role='manager')[0],403)
+  self.call(f'documents/{id}/submit',{})
+  self.assertEqual(self.call('documents/'+id,role='manager')[1]['state'],'submitted')
+ def test_submit_requires_explicit_approver_when_auto_disabled(self):
+  id=self.make();self.call('settings',dict(auto_manager=False),'ito')
+  self.assertEqual(self.call(f'documents/{id}/submit',{})[0],400)
+  status,r=self.call(f'documents/{id}/submit',dict(approvers=['E1002']))
+  self.assertEqual(status,200);self.assertEqual(r['approvers'],['E1002'])
  def test_unbalanced_journal_is_rejected(self):
   p=self.payload();p['lines'][1]['credit']-=1;status,r=self.call('documents',p);self.assertEqual(status,400);self.assertIn('차변',r['error'])
  def test_source_amount_immutable_and_duplicate_prevented(self):

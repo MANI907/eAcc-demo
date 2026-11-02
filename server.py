@@ -168,6 +168,10 @@ class Handler(BaseHTTPRequestHandler):
       data['delegations']=[x for x in data['delegations'] if x['owner']==user['id'] or x['delegate']==user['id']]
       data['unlocks']=[x for x in data['unlocks'] if x['owner']==user['id'] or user['role']=='manager']
      return self.send(200,dict(user=user,users=list(USERS.values()),menus=MENUS,settings=json.loads(c.execute('SELECT data FROM settings').fetchone()[0]),documents=my_docs,today=today(),**data))
+    if path.startswith('/api/documents/'):
+     d=doc(c,path.rsplit('/',1)[-1])
+     if d['owner']!=user['id'] and user['role']!='ito' and user['id'] not in d.get('approvers',[]):raise PermissionError('전표 조회 권한이 없습니다.')
+     return self.send(200,d)
     if path=='/api/audit':
      require(user,'ito');return self.send(200,[dict(x) for x in c.execute('SELECT * FROM audit ORDER BY id DESC LIMIT 200')])
     if path=='/api/export':
@@ -185,7 +189,7 @@ class Handler(BaseHTTPRequestHandler):
   except blob_store.StorageError as error:self.send(502,dict(error=str(error),code=error.code))
   except Exception as error:
    diagnostic=diagnose(error)
-   component='bootstrap' if urlparse(self.path).path=='/api/bootstrap' else 'attachment' if urlparse(self.path).path.startswith('/api/files/') else 'other'
+   component='bootstrap' if urlparse(self.path).path=='/api/bootstrap' else 'attachment' if urlparse(self.path).path.startswith('/api/files/') else 'document' if urlparse(self.path).path.startswith('/api/documents/') else 'other'
    frames=[Path(f.filename).name+':'+f.name+':'+str(f.lineno) for f in traceback.extract_tb(error.__traceback__) if Path(f.filename).parent==ROOT]
    print('Data read failed ['+diagnostic['code']+'] component='+component+' type='+type(error).__name__+' at='+','.join(frames)+'. '+diagnostic['message'],flush=True)
    self.send(503,dict(error='['+diagnostic['code']+'] 데이터를 다시 불러오지 못했습니다. 이미 저장한 전표는 재작성하지 말고 목록을 새로 조회하세요.',code=diagnostic['code']))
