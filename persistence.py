@@ -21,7 +21,7 @@ class Postgres:
    if statement.strip():self.conn.execute(statement)
 
 @contextmanager
-def connect(sqlite_path):
+def connect(sqlite_path, *, initialize=False):
  url=os.environ.get('DATABASE_URL','')
  if not url:
   c=sqlite3.connect(sqlite_path,timeout=15);c.row_factory=sqlite3.Row;c.execute('PRAGMA foreign_keys=ON')
@@ -43,9 +43,10 @@ def connect(sqlite_path):
  ca=resolve_ca(config.get('host',''))
  # Explicit kwargs override URL options, so the URL cannot turn TLS verification off.
  with psycopg.connect(url,sslmode='verify-full',sslrootcert=ca,connect_timeout=10,prepare_threshold=None,row_factory=row_factory) as conn:
-  conn.execute('CREATE SCHEMA IF NOT EXISTS eacc')
-  conn.execute('REVOKE ALL ON SCHEMA eacc FROM PUBLIC')
-  conn.execute('SET LOCAL search_path TO eacc')
-  # Database-level transaction serialization also protects multiple server processes.
+  # Lock before any schema/catalog access, including concurrent process startup.
   conn.execute('SELECT pg_advisory_xact_lock(7143090701)')
+  if initialize:
+   conn.execute('CREATE SCHEMA IF NOT EXISTS eacc')
+   conn.execute('REVOKE ALL ON SCHEMA eacc FROM PUBLIC')
+  conn.execute('SET LOCAL search_path TO eacc')
   yield Postgres(conn)

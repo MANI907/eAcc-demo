@@ -40,3 +40,12 @@ SQLite 및 TLS 검증된 PostgreSQL에서 업무 테스트 18개와 배포 경�
 - 단건 상태 조회 API는 전표 소유자·지정 결재자·ITO로 접근을 제한합니다. 늦게 온 조회 응답은 다른 사용자나 닫힌 창을 다시 열지 않습니다.
 - 41개 통합·보안 테스트 통과. 실제 로컬 HTTP/브라우저 검증에서 오류가 모달 안에 유지되고, bootstrap을 의도적으로 실패시켜도 상신 완료가 결재중으로 반영되는지 확인했습니다. 결재선 자동설정 OFF 때 직접 선택, 회수·반려·재상신·승인·모의전기도 통과했습니다.
 - 재현 스크립트: python3 tests/browser_approvals.py. 임시 SQLite를 사용하며 배포된 DB를 변경하지 않습니다. 실제 사용자가 받은 상신 실패의 원문은 가려져 확인하지 못했으므로 실제 서비스 결과는 재배포 후 확인해야 합니다.
+
+## PostgreSQL 연결 초기화 경합 수정 · 2026-11-03
+
+- 일반 연결에서 `CREATE SCHEMA`와 `REVOKE`를 제거하고 서버 `init()`에서만 실행합니다. 초기화·일반 연결 모두 동일한 트랜잭션 advisory lock을 첫 SQL로 획득합니다. 잠금은 commit/rollback 때 해제되고 `search_path`는 트랜잭션에만 적용됩니다.
+- 스키마·테이블 생성은 기존 `IF NOT EXISTS`를 유지하며 데이터 삭제·재생성·이관은 하지 않습니다. 기존 전표와 증빙을 유지합니다.
+- 전체 회귀 테스트: 43개 중 42개 통과, 선택적 PostgreSQL 테스트 1개 스킵. 해당 테스트는 별도 실행에서 2개 모두 통과했습니다.
+- 격리된 PostgreSQL 17과 호스트명 검증을 포함한 TLS 연결에서 8개 작업자로 초기화 16회, 12개 작업자로 로그인·bootstrap 조회 48회, 초기화 추가 16회를 실행했습니다. 모든 요청이 성공하고 objects/documents/files/audit/settings 전체 행이 검증 전후 동일했습니다.
+- 재현: 빈 전용 테스트 DB를 준비한 뒤 `EACC_TEST_POSTGRES_URL=postgresql://... DATABASE_SSL_ROOT_CERT=/path/to/trusted-ca.pem .runtime/venv/bin/python -m unittest discover -s tests -p test_persistence_concurrency.py -v`. 이 테스트는 전용 DB에 테스트 전표·증빙을 생성하므로 운영 DB를 지정하지 않습니다.
+- 실제 배포 DB에는 접근하지 않았습니다. GitHub 반영 후 배포 서비스 재배포와 실제 로그인 조회 확인은 별도입니다.

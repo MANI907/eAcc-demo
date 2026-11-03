@@ -26,7 +26,7 @@ SCHEMA='''CREATE TABLE IF NOT EXISTS objects(id TEXT PRIMARY KEY,kind TEXT NOT N
   CREATE TABLE IF NOT EXISTS files(id TEXT PRIMARY KEY,owner TEXT,name TEXT,mime TEXT,content BLOB);
   '''
 def init():
- with connection() as c:
+ with persistence.connect(DB,initialize=True) as c:
   c.executescript(SCHEMA)
   if not c.execute('SELECT 1 FROM settings').fetchone():
    c.execute('INSERT INTO settings VALUES(1,?)',(json.dumps(dict(favorites=True,notifications=True,auto_manager=True,dashboard=True,refresh_version=1)),))
